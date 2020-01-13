@@ -1,5 +1,5 @@
 import { AjaxError,ConsoleError,JsError,PromiseError,ResourceError,VueError } from './errorType';
-import { AjaxLibEnum } from "./base/baseConfig.js";
+import { AjaxLibEnum } from "./error/baseConfig";
 import MonitorPerformance from './performance';
 class MonitorJS {
     constructor(){

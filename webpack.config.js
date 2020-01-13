@@ -16,13 +16,13 @@ module.exports = {
         quiet: true, // 如果使用webpack-dev-server，需要设为true，禁止显示devServer的console信息
     },
     //other code 压缩 js 文件
-    optimization: {
-        minimizer: [
-            new UglifyWebpackPlugin({
-                parallel: 4
-            })
-        ],
-    },
+    // optimization: {
+    //     minimizer: [
+    //         new UglifyWebpackPlugin({
+    //             parallel: 4
+    //         })
+    //     ],
+    // },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.html')

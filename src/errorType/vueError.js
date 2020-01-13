@@ -1,4 +1,4 @@
-import BaseMonitor from "../error/baseMonitor.js";
+import BaseMonitor from "../error/BaseMonitor.js";
 import { ErrorCategoryEnum,ErrorLevelEnum } from "../error/baseConfig.js";
 
 /**
