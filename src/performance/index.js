@@ -2,7 +2,7 @@
  * 监控工具
  */
 import pagePerformance from "./performance.js";
-import DeviceInfo from "../utils/getDeviceInfo";
+import DeviceInfo from "../utils/getDeviceInfo.js";
 // import API from "../base/api.js";
 
 class MonitorPerformance {

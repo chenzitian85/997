@@ -1,5 +1,6 @@
-import DeviceInfo from "../utils/getDeviceInfo";
-import common from "../utils/common";  //工具
+import { ErrorLevelEnum,ErrorCategoryEnum } from "./baseConfig.js";
+import DeviceInfo from "../utils/getDeviceInfo.js";
+import common from "../utils/common.js";  //工具
 /*
 * 监控基类 回调信息在这里处理 所有的 错误类都继承这个类
 * */
@@ -7,7 +8,7 @@ class  BaseMonitor {
     /*
     * 上报错误信息
     * */
-    constructor(parmas){
+    constructor(params){
         try {
             this.category = ErrorCategoryEnum.UNKNOW_ERROR; //错误类型
             this.level = ErrorLevelEnum.INFO; //错误等级
@@ -34,12 +35,41 @@ class  BaseMonitor {
                 if(!this.msg)return
                 if( this.reportUrl && this.url && this.url.toLowerCase().indexOf(this.reportUrl.toLowerCase())>=0 ){
                     console.log("接口异常",this.msg)
-
                 }
+                let errorInfo = this.handleErrorInfo();
+                common.isFunction(this.errorAfter) && this.errorAfter(errorInfo);
             }catch (e) {
                 console.log(e)
             }
         },100)
+    }
+
+    /**
+     * 获取扩展信息
+     */
+    getExtendsInfo(){
+        try {
+            let ret = {};
+            let extendsInfo = this.extendsInfo || {};
+            let dynamicParams;
+            if(common.isFunction(extendsInfo.getDynamic)){
+                dynamicParams = extendsInfo.getDynamic();   //获取动态参数
+            }
+            //判断动态方法返回的参数是否是对象
+            if(common.isObject(dynamicParams)){
+                extendsInfo = {...extendsInfo,...dynamicParams};
+            }
+            //遍历扩展信息，排除动态方法
+            for(var key in extendsInfo){
+                if(!common.isFunction(extendsInfo[key])){    //排除获取动态方法
+                    ret[key] = extendsInfo[key];
+                }
+            }
+            return ret;
+        } catch (error) {
+            console.log('call getExtendsInfo error',error);
+            return {};
+        }
     }
 
     /**
