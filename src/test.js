@@ -1,7 +1,3 @@
-export let a = 10
-class Test {
-    aa(){
-        console.log("11111111")
-    }
-}
-export default Test
+console.log([...[123,123,123]])
+let a = 10
+export default a

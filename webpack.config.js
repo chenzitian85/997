@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 module.exports = {
-    entry: path.resolve(__dirname, 'src/main.js'),
+    entry: path.resolve(__dirname, 'src/test.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
@@ -38,6 +38,13 @@ module.exports = {
     //other code
     module: {
         rules: [
+            {
+                test: path.join(__dirname, 'es6'),
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
+            },
             {
                 test: /\.less/,
                 use: ['style-loader', 'css-loader', 'less-loader'],

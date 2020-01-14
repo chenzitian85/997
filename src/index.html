@@ -26,9 +26,9 @@
 <!--<script type="module"  src="../dist/index.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
 <script type="module">
-    import  MonitorJS  from "http://localhost:8899/main.js";
-    // import {Test} from './test.js'
-    // new Test().aa()
+    // import  MonitorJS  from "../dist/index.js";
+    import a from '../dist/index.js'
+    console.log(a)
     new MonitorJS().init({
         consoleError:true,
         vueError:true,  //是否上报Vue错误
