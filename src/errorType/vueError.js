@@ -24,7 +24,6 @@ class VueError extends BaseMonitor {
                     stack:error.stack,
                     info:info,
                 };
-                console.log(2222,Object)
                 if(Object.prototype.toString.call(vm) === '[object Object]'){
                     metaData.componentName = vm._isVue ? vm.$options.name || vm.$options._componentTag : vm.name;
                     metaData.propsData = vm.$options.propsData;

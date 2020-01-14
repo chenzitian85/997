@@ -9,7 +9,7 @@
 <body>
 
 <div id="app">
-    <button @click="func2">性能监1asdfas2111听</button>
+    <button @click="func2">性能监12111听</button>
     <br><br>
     <img src="https://pic.xiaohuochai.site/blog/chromePerformance1.png" alt="" width="100%">
     {{ message +'1'}}
@@ -21,15 +21,13 @@
     {{ message +'3'}}
     <br><br><br><br>
     <img :src="src4" alt="" width="100%">
-    {{ message +'6'}}
+    {{ message +'4'}}
 </div>
 <!--<script type="module"  src="../dist/index.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
 <script type="module">
-    import MonitorJS from "../dist/index.js";
-    // import Test from './test.js'
-    // import {a} from './test.js'
-    // console.info(a,111)
+    import  MonitorJS  from "http://localhost:8899/main.js";
+    // import {Test} from './test.js'
     // new Test().aa()
     new MonitorJS().init({
         consoleError:true,
